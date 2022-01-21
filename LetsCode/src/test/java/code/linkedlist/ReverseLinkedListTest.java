@@ -1,5 +1,6 @@
 package code.linkedlist;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -10,9 +11,15 @@ import static org.testng.Assert.assertNotNull;
  */
 public class ReverseLinkedListTest {
 
-    @Test
+    private ReverseLinkedList reverseLinkedList = null;
+
+    @BeforeMethod
+    private void beforeMethod() {
+        reverseLinkedList = new ReverseLinkedList();
+    }
+
+    @Test(groups = "unit")
     public void testReversal() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
         reverseLinkedList.print(head);
 
@@ -24,9 +31,8 @@ public class ReverseLinkedListTest {
         assertEquals(reverseLinkedList.getLength(newHead), 5);
     }
 
-    @Test
+    @Test(groups = "unit")
     public void testReversalWithK1() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
         reverseLinkedList.print(head);
 
@@ -38,9 +44,8 @@ public class ReverseLinkedListTest {
         assertEquals(reverseLinkedList.getLength(newHead), 5);
     }
 
-    @Test
+    @Test(groups = "unit")
     public void testReversalWithK2_SkipLast() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
         reverseLinkedList.print(head);
 
@@ -52,9 +57,8 @@ public class ReverseLinkedListTest {
         assertEquals(reverseLinkedList.getLength(newHead), 5);
     }
 
-    @Test
+    @Test(groups = "unit")
     public void testReversalWithK2_NoSkip() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5, 6});
         reverseLinkedList.print(head);
 
@@ -66,9 +70,8 @@ public class ReverseLinkedListTest {
         assertEquals(reverseLinkedList.getLength(newHead), 6);
     }
 
-    @Test
+    @Test(groups = "unit")
     public void testReversalWithK3() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
         reverseLinkedList.print(head);
 
@@ -80,9 +83,8 @@ public class ReverseLinkedListTest {
         assertEquals(reverseLinkedList.getLength(newHead), 8);
     }
 
-    @Test
+    @Test(groups = "unit")
     public void testReversalWithKMoreThanLength() {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
         reverseLinkedList.print(head);
 

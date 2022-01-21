@@ -1,16 +1,27 @@
 package code.linkedlist;
 
-// input1 1->2->3->4->5, k=2
-// output1 2->1->4->3->5
-
-// input2 1->2->3->4->5, k=3
-// output2 3->2->1->4->5
-
-// input2 1->2->3->4->5->6->7, k=3
-// output2 3->2->1->6->5->4->7
-
+/**
+ * Reverse a Linked List
+ * 1. Given a linked list, reverse it
+ * 2. Given a linked list, and an integer 'k', reverse every k segments of the linked list
+ *
+ * Example:-
+ * input1 1->2->3->4->5, k=2
+ * output1 2->1->4->3->5
+ *
+ * input2 1->2->3->4->5, k=3
+ * output2 3->2->1->4->5
+ *
+ * input2 1->2->3->4->5->6->7, k=3
+ * output2 3->2->1->6->5->4->7
+ */
 public class ReverseLinkedList {
 
+    /**
+     * Creates a linked list for testing purpose, using an input array
+     * @param arr integer array
+     * @return Head of Linked List
+     */
     public LinkedNode createAList(final int[] arr) {
         LinkedNode next = null;
         LinkedNode node = null;
@@ -28,6 +39,12 @@ public class ReverseLinkedList {
     }
 
 
+    /**
+     * Reverse the linked list, with given k
+     * @param head Head of Linked List
+     * @param k integer
+     * @return Head of new Linked List
+     */
     public LinkedNode reverseTheList(final LinkedNode head, final int k) {
         final int length = getLength(head);
         System.out.println("Length of LL " + length);
@@ -63,6 +80,13 @@ public class ReverseLinkedList {
         return newHead;
     }
 
+    /**
+     * Reverse the linked list, with given k, using recursion
+     * @param prev Previous Node
+     * @param current Current Node
+     * @param k integer
+     * @return Object containing multiple fields
+     */
     private ReturnValue reverseTheList(final LinkedNode prev, final LinkedNode current, int k) {
 
         if (k == 0) {
@@ -83,13 +107,23 @@ public class ReverseLinkedList {
         }
     }
 
-
+    /**
+     * Reverses the Linked List
+     * @param head Head of Linked List
+     * @return Head of new Linked List
+     */
     public LinkedNode reverseTheList(final LinkedNode head) {
         LinkedNode newHead = reverseTheList(head, head.getNext());
         head.setNext(null);
         return newHead;
     }
 
+    /**
+     * Reverses the Linked List, using recursion
+     * @param prev Previous Node
+     * @param current Current Node
+     * @return New Head
+     */
     private LinkedNode reverseTheList(final LinkedNode prev, final LinkedNode current) {
 
         if (current == null) {
@@ -107,7 +141,10 @@ public class ReverseLinkedList {
 
     }
 
-
+    /**
+     * Prints the linked list
+     * @param node Head of the Linked List
+     */
     public void print(LinkedNode node) {
         while (node.getNext() != null) {
             System.out.printf("V: %d -> ", node.getValue());
@@ -116,6 +153,11 @@ public class ReverseLinkedList {
         System.out.printf("V: %d \n", node.getValue());
     }
 
+    /**
+     * Returns the length of the Linked List
+     * @param node Head of the linked list
+     * @return integer (length)
+     */
     public int getLength(LinkedNode node) {
         int length = 0;
 

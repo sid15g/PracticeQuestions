@@ -1,5 +1,8 @@
 package code.linkedlist;
 
+/**
+ * Return Object for Reversing the Linked List with given 'k'
+ */
 public class ReturnValue {
 
     private LinkedNode head = null;

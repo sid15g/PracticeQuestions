@@ -1,5 +1,8 @@
 package code.linkedlist;
 
+/**
+ * Linked List Node
+ */
 public class LinkedNode {
 
     private int value;

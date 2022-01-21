@@ -1,5 +1,7 @@
 package code.dp;
 
+import java.util.Arrays;
+
 /**
  * https://www.spoj.com/problems/FARIDA/
  *
@@ -42,15 +44,72 @@ public class PrincessFarida {
      * @return the max number of coins collected
      */
     public int solve(final int caseId, final int numberOfMonsters, final int[] coinsArray) {
-        final int[][] buffer = new int[numberOfMonsters][numberOfMonsters];
-        final int result = solveUsingDynamicProgramming(coinsArray, buffer);
+        //final int result = solveUsingRecursion(coinsArray, 0, numberOfMonsters);
+        final int result = solveUsingDynamicProgramming(numberOfMonsters, coinsArray);
 
         System.out.printf("Case %d: %d", caseId, result);
         return result;
     }
 
-    private int solveUsingDynamicProgramming(final int[] coinsArray, final int[][] buffer) {
-        //TODO
-        return 0;
+    private int solveUsingRecursion(final int[] coinsArray, final int current, final int size) {
+        if (coinsArray == null || size == 0) {
+            return 0;
+        }
+        if (coinsArray.length == 1 || size == 1) {
+            return coinsArray[current];
+        }
+        if (current >= size) {
+            return 0;
+        }
+        if (current == size - 1) {
+            return coinsArray[current];
+        }
+
+        int resultA = coinsArray[current] + solveUsingRecursion(coinsArray, current+2, size);
+        int resultB = solveUsingRecursion(coinsArray, current+1, size);
+        return Math.max(resultA, resultB);
+    }
+
+    private void initializeBaseCases(final int[] coinsArray, final int[][] buffer) {
+        Arrays.stream(buffer).forEach(arr -> Arrays.fill(arr, 0));
+
+        for(int i=0; i<coinsArray.length; i++) {
+            buffer[i][i] = coinsArray[i];
+        }
+    }
+
+    private int solveUsingDynamicProgramming(final int numberOfMonsters, final int[] coinsArray) {
+        if (coinsArray == null || numberOfMonsters == 0) {
+            return 0;
+        }
+        if (coinsArray.length == 1 || numberOfMonsters == 1) {
+            return coinsArray[0];
+        }
+
+        final int[][] buffer = new int[numberOfMonsters][numberOfMonsters];
+        initializeBaseCases(coinsArray, buffer);
+        int max = numberOfMonsters;
+
+        for (int i=0; i<numberOfMonsters; i++ ) {
+            for (int j=0; j<max; j++ ) {
+                int resultA = buffer[j][j] + safeFetch(buffer, j+2, i+j);
+                int resultB = safeFetch(buffer, j+1, i+j);
+                buffer[j][j+i] = Math.max(resultA, resultB);
+            }
+            max--;
+        }
+
+        return buffer[0][numberOfMonsters-1];
+    }
+
+    private int safeFetch(final int[][] buffer, final int i, final int j) {
+        if ( i > j ) {
+            return 0;
+        }
+        if (i >= buffer.length || j >= buffer.length) {
+            return 0;
+        }
+
+        return buffer[i][j];
     }
 }

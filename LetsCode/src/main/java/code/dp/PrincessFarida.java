@@ -51,6 +51,13 @@ public class PrincessFarida {
         return result;
     }
 
+    /**
+     * Solve the problem using recursion
+     * @param coinsArray Array of coins
+     * @param current current index
+     * @param size size of array => number of monsters
+     * @return max coins (integer)
+     */
     private int solveUsingRecursion(final int[] coinsArray, final int current, final int size) {
         if (coinsArray == null || size == 0) {
             return 0;
@@ -70,6 +77,11 @@ public class PrincessFarida {
         return Math.max(resultA, resultB);
     }
 
+    /**
+     * Initializes the buffer
+     * @param coinsArray  Array of coins
+     * @param buffer buffer to story history used for DP
+     */
     private void initializeBaseCases(final int[] coinsArray, final int[][] buffer) {
         Arrays.stream(buffer).forEach(arr -> Arrays.fill(arr, 0));
 
@@ -78,6 +90,12 @@ public class PrincessFarida {
         }
     }
 
+    /**
+     * Solve the problem using dynamic programming
+     * @param numberOfMonsters number of monsters
+     * @param coinsArray  Array of coins
+     * @return max coins (integer)
+     */
     private int solveUsingDynamicProgramming(final int numberOfMonsters, final int[] coinsArray) {
         if (coinsArray == null || numberOfMonsters == 0) {
             return 0;
@@ -102,6 +120,13 @@ public class PrincessFarida {
         return buffer[0][numberOfMonsters-1];
     }
 
+    /**
+     * Safely fetches values from the buffer, to prevent exceptions
+     * @param buffer DP buffer
+     * @param i index i
+     * @param j index j
+     * @return integer value of buffer[i][j]
+     */
     private int safeFetch(final int[][] buffer, final int i, final int j) {
         if ( i > j ) {
             return 0;

@@ -27,6 +27,14 @@ import java.util.stream.Collectors;
  */
 public class MinimumPlatform {
 
+    /**
+     * Find minimum Platform required
+     *
+     * @param arrivals   arrival time array
+     * @param departures departure time array
+     * @param n          total time
+     * @return minimum platforms required (integer)
+     */
     public int findMinimumPlatformsRequired(final int[] arrivals, final int[] departures, final int n) {
 
         if (arrivals == null || departures == null || arrivals.length == 0 || departures.length == 0 || n == 0) {
@@ -66,6 +74,12 @@ public class MinimumPlatform {
         return scheduleMap.size();
     }
 
+    /**
+     * Inserts the new time slot into the given list
+     *
+     * @param timeSlots   existing list
+     * @param newTimeSlot new time slot
+     */
     private void insertIntoListOfTimeSlot(final List<TimeSlot> timeSlots, final TimeSlot newTimeSlot) {
 
         if (timeSlots.size() == 0) {
@@ -76,19 +90,24 @@ public class MinimumPlatform {
         int index = 0;
         int res = timeSlots.get(0).compareTo(newTimeSlot);
 
-        while (res < 0 && index+1 < timeSlots.size()) {
+        while (res < 0 && index + 1 < timeSlots.size()) {
             final TimeSlot current = timeSlots.get(++index);
             res = current.compareTo(newTimeSlot);
         }
 
         if (res < 0) {
-            timeSlots.add(index+1, newTimeSlot);
+            timeSlots.add(index + 1, newTimeSlot);
         } else {
             timeSlots.add(index, newTimeSlot);
         }
     }
 
-
+    /**
+     * Print the list of time slot, for a given platform
+     *
+     * @param timeSlots      time slot list
+     * @param platformNumber platform number
+     */
     private void printTimeSlots(final List<TimeSlot> timeSlots, final int platformNumber) {
         System.out.printf("TS%d:", platformNumber);
         timeSlots.forEach(slot -> {

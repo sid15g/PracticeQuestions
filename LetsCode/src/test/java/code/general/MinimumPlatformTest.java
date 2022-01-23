@@ -49,7 +49,7 @@ public class MinimumPlatformTest {
 
     @Test(groups = "unit")
     public void testGivenCase2() {
-        final int result = minimumPlatform.findMinimumPlatformsRequired(new int[] {900, 940}, new int[]{910, 1200}, 2);
+        final int result = minimumPlatform.findMinimumPlatformsRequired(new int[]{900, 940}, new int[]{910, 1200}, 2);
         assertEquals(result, 1);
     }
 

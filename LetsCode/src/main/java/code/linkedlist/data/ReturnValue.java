@@ -1,4 +1,4 @@
-package code.linkedlist;
+package code.linkedlist.data;
 
 /**
  * Return Object for Reversing the Linked List with given 'k'

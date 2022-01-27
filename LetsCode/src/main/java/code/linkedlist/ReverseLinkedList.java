@@ -1,5 +1,8 @@
 package code.linkedlist;
 
+import code.linkedlist.data.LinkedNode;
+import code.linkedlist.data.ReturnValue;
+
 /**
  * Reverse a Linked List
  * 1. Given a linked list, reverse it
@@ -16,28 +19,6 @@ package code.linkedlist;
  * output2 3->2->1->6->5->4->7
  */
 public class ReverseLinkedList {
-
-    /**
-     * Creates a linked list for testing purpose, using an input array
-     * @param arr integer array
-     * @return Head of Linked List
-     */
-    public LinkedNode createAList(final int[] arr) {
-        LinkedNode next = null;
-        LinkedNode node = null;
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            node = new LinkedNode(arr[i]);
-
-            if (next != null) {
-                node.setNext(next);
-            }
-            next = node;
-        }
-
-        return node;
-    }
-
 
     /**
      * Reverse the linked list, with given k
@@ -139,18 +120,6 @@ public class ReverseLinkedList {
             return head;
         }
 
-    }
-
-    /**
-     * Prints the linked list
-     * @param node Head of the Linked List
-     */
-    public void print(LinkedNode node) {
-        while (node.getNext() != null) {
-            System.out.printf("V: %d -> ", node.getValue());
-            node = node.getNext();
-        }
-        System.out.printf("V: %d \n", node.getValue());
     }
 
     /**

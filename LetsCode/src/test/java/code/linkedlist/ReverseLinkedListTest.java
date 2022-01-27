@@ -1,8 +1,11 @@
 package code.linkedlist;
 
+import code.linkedlist.data.LinkedNode;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static code.linkedlist.util.LinkedListTestUtil.createAList;
+import static code.linkedlist.util.LinkedListTestUtil.print;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
@@ -20,12 +23,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversal() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 5);
         assertEquals(reverseLinkedList.getLength(newHead), 5);
@@ -33,12 +36,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversalWithK1() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head, 1);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 1);
         assertEquals(reverseLinkedList.getLength(newHead), 5);
@@ -46,12 +49,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversalWithK2_SkipLast() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head, 2);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 2);
         assertEquals(reverseLinkedList.getLength(newHead), 5);
@@ -59,12 +62,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversalWithK2_NoSkip() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5, 6});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5, 6});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head, 2);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 2);
         assertEquals(reverseLinkedList.getLength(newHead), 6);
@@ -72,12 +75,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversalWithK3() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head, 3);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 3);
         assertEquals(reverseLinkedList.getLength(newHead), 8);
@@ -85,12 +88,12 @@ public class ReverseLinkedListTest {
 
     @Test(groups = "unit")
     public void testReversalWithKMoreThanLength() {
-        LinkedNode head = reverseLinkedList.createAList(new int[]{1, 2, 3, 4, 5});
-        reverseLinkedList.print(head);
+        LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5});
+        print(head);
 
         System.out.println("Reversing the List... ");
         LinkedNode newHead = reverseLinkedList.reverseTheList(head, 7);
-        reverseLinkedList.print(newHead);
+        print(newHead);
         assertNotNull(newHead);
         assertEquals(newHead.getValue(), 1);
         assertEquals(reverseLinkedList.getLength(newHead), 5);

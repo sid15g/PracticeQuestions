@@ -30,6 +30,15 @@ public class MergeKSortedLinkedListsTest {
     }
 
     @Test(groups = "unit")
+    public void testEmpty() {
+        final LinkedNode head1 = null;
+        final LinkedNode head2 = null;
+
+        final LinkedNode result = mergeKSortedLinkedLists.mergeKSortedLists(new LinkedNode[]{head1, head2});
+        assertNull(result);
+    }
+
+    @Test(groups = "unit")
     public void testSingleArray() {
         final LinkedNode head = createAList(new int[]{1, 2, 3, 4, 5});
         print(head);

@@ -4,7 +4,9 @@ import code.linkedlist.data.LinkedNode;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 /**
  * Given the heads of sorted Linked List as an array
@@ -28,11 +30,19 @@ public class MergeKSortedLinkedLists {
         if(nodes == null || nodes.length == 0) {
             return null;
         }
-        if(nodes.length == 1) {
-            return nodes[0];
+
+        final List<LinkedNode> nodeList = Arrays.stream(nodes)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        if(nodeList.size() == 0) {
+            return null;
+        }
+        if(nodeList.size() == 1) {
+            return nodeList.get(0);
         }
 
-        return mergeKSortedListsUsingMinHeap(Arrays.asList(nodes));
+        return mergeKSortedListsUsingMinHeap(nodeList);
     }
 
     /**
